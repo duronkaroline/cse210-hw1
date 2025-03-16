@@ -1,11 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.CompilerServices;
 
-<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
-  </PropertyGroup>
+class Journal
+{
+    private List<JournalEntry> entries = new List<JournalEntry>();
+    private static Random random = new Random();
 
-</Project>
+    private List<string> prompts = new List<string>
+    {
+
+    "What was a blessing for you today?",
+    "What things make you angry?",
+
+    "what is something you feel you can improve as a person?",
+
+    "How was your day today?",
+
+    "What is something you would like to change in your daily life?",
+
+    "What is something that makes you happy at the end of the day?"
+
+
+    };
+
+
+    public void WriteEntry()
+    {
+        string prompt = prompts[random.Next(prompts.Count)];
+        Console.WriteLine($"\nprompt: {prompt}");
+        Console.Write("Your response:");
+        string response = Console.ReadLine();
+        entries.Add(new JournalEntry(prompt, response));
+        Console.WriteLine("Entry saved!\n");
+
+
+    }
+ 
+    
+    
+
+     public void DisplayJournal()
+    {
+        Console.WriteLine("\nJournal Entries");
+        foreach (var entry in entries);
+    {
+        Console.WriteLine(entry);
+    }
+    Console.WriteLine();        
+    }
+
+
+
+     public void SaveJournal(string filename)
+
+    {
+        using (StreamWriter writer = new StreamWriter(filename))
+        {
+                foreach(var entrty in entries)
+                {
+
+                    writer.WriteLine($"")
+                }
+
+        }
+
+        
+    }
+
+
+
+     
+
+        
+    }
+
+
+
+
