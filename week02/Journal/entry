@@ -1,25 +1,22 @@
-class JournalEntry
-{  
 
-    public string Date { get; set;}
-    public string prompt { get; set;}
-    public string Response { get; set;}
+public class JournalEntry
+{
+
+    public string Date { get; set; }
+    public string Prompt { get; set; }
+    public string Response { get; set; }
 
     public JournalEntry(string prompt, string response)      
     {
     Date = DateTime.Now.ToShortDateString();
+    this.Prompt = prompt;
+    this.Response = response;
 
-    prompt = prompt;
-    Response = response;
-
-
-    }
+}
     public override string ToString()
     {
-        return $"{Date} | {prompt} | {Response}";
+        return $"{Date} | {Prompt} | { Response}";
+
 
     }
 }
-
-   
-
