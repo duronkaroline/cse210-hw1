@@ -1,14 +1,19 @@
-   static void Main(string[] args)
+ using System;
+
+class Program
+{
+    static void Main(string[] args)
     {
-        {
-         journal myJournal = new Journal();
+         MyyJournal  myJournal = new MyyJournal();
           bool running = true;
     
 
 
     while (running)
 
-    { Console.WriteLine("Journal Menu:");
+    {   
+      Console.WriteLine(" Welcome to My Deep Journal, Please select one option:");
+       Console.WriteLine("Journal Menu:");
        Console.WriteLine("1.Write a new entry");
        Console.WriteLine("2.Display journal");
        Console.WriteLine("3. Save journal to a file");
@@ -22,21 +27,36 @@
        switch (choice)
        {
         case "1":
-        myJournal.WriteNewENTRY();
-        break;
+            
+             myJournal.WriteEntry();
+            break;
         case "2":
-        myJournal.WriteNewENTRY();
-        break;
+            myJournal.DisplayJournal();
+            break;
         case "3":
-        myJournal.WriteNewENTRY();
-        break;
+            Console.Write("enter filename to save");
+            string savefile = Console.ReadLine();
+             myJournal.SaveJournal(savefile);
+            break;
         case "4":
-        myJournal.WriteNewENTRY();
-        break;
+            Console.Write("enter filename to load");
+            string loadfile = Console.ReadLine();
+            myJournal.LoadJournal(loadfile);
+            break;
         case "5":
-        myJournal.WriteNewENTRY();
-        break;
+            running = false;
+            Console.WriteLine("Existing Journal App...");
+            break;
 
       default:
-        Console.WriteLine("Invalid option, please try again.\n");
+            Console.WriteLine("Invalid option, please try again.");
         break;
+
+       }
+
+
+    }
+
+    }
+    }
+    
