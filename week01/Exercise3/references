@@ -1,0 +1,42 @@
+using System;
+
+public class Reference
+{
+    private string book;       
+    private int chapter;      
+    private int startVerse;    
+    private int endVerse;     
+
+                    public Reference(string reference)
+    {
+        ParseReference(reference);
+    }
+
+    private void ParseReference(string reference)
+    {
+        var parts = reference.Split(new[] { ' ', ':' }, StringSplitOptions.RemoveEmptyEntries);
+
+        if      (parts.Length >= 3)
+        {
+            book = parts[0];
+            chapter = int.Parse(parts[1]);
+       
+            var verseParts = parts[2].Split('-');
+            
+            startVerse = int.Parse(verseParts[0]);
+            endVerse = verseParts.Length > 1 ? int.Parse(verseParts[1]) : startVerse;
+        }
+        else
+        {
+            throw new FormatException("Invalid reference format.");
+        }
+    }
+
+    
+    public string GetDisplayText()
+    {
+                        return endVerse > startVerse
+                ? $"{book} {chapter}:{startVerse}-{endVerse}"
+                     : $"{book} {chapter}:{startVerse}";
+    }
+}
